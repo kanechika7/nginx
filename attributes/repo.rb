@@ -19,15 +19,18 @@
 # limitations under the License.
 #
 
-case node['platform_family']
-when 'rhel', 'fedora'
-  case node['platform']
-  when 'centos'
-    # See http://wiki.nginx.org/Install
-    default['nginx']['upstream_repository'] = "http://nginx.org/packages/centos/#{node['platform_version'].to_i}/$basearch/"
-  else
-    default['nginx']['upstream_repository'] = "http://nginx.org/packages/rhel/#{node['platform_version'].to_i}/$basearch/"
-  end
-when 'debian'
-  default['nginx']['upstream_repository'] = "http://nginx.org/packages/#{node['platform']}"
-end
+# for amazon aws
+default['nginx']['upstream_repository'] = "http://nginx.org/packages/centos/6/$basearch/"
+
+#case node['platform_family']
+#when 'rhel', 'fedora'
+#  case node['platform']
+#  when 'centos'
+#    # See http://wiki.nginx.org/Install
+#    default['nginx']['upstream_repository'] = "http://nginx.org/packages/centos/#{node['platform_version'].to_i}/$basearch/"
+#  else
+#    default['nginx']['upstream_repository'] = "http://nginx.org/packages/rhel/#{node['platform_version'].to_i}/$basearch/"
+#  end
+#when 'debian'
+#  default['nginx']['upstream_repository'] = "http://nginx.org/packages/#{node['platform']}"
+#end
